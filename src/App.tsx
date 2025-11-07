@@ -70,9 +70,11 @@ function App() {
         </header>
 
         <div className="grid">
+          {/* Tipo de vehículo */}
           <div className="field">
-            <label>Tipo de vehículo</label>
+            <label htmlFor="vehicleType">Tipo de vehículo</label>
             <select
+              id="vehicleType"
               value={type}
               onChange={(e) => setType(e.target.value as TripType)}
             >
@@ -83,42 +85,46 @@ function App() {
             </select>
           </div>
 
+          {/* Distancia */}
           <div className="field">
-            <label>Distancia (km)</label>
+            <label htmlFor="distance">Distancia (km)</label>
             <input
+              id="distance"
               type="number"
               min={1}
-              st
+              step={0.1}
               value={distance}
               onChange={(e) => setDistance(Number(e.target.value))}
             />
           </div>
 
+          {/* Hora pico */}
           <div className="field checkbox-field">
-            <label>
-              <input
-                type="checkbox"
-                checked={peakHour}
-                onChange={(e) => setPeakHour(e.target.checked)}
-              />
-              Hora pico
-            </label>
-          </div>
-
-          <div className="field checkbox-field">
-            <label>
-              <input
-                type="checkbox"
-                checked={rain}
-                onChange={(e) => setRain(e.target.checked)}
-              />
-              Lluvia
-            </label>
-          </div>
-
-          <div className="field">
-            <label>Peajes</label>
             <input
+              id="peakHour"
+              type="checkbox"
+              checked={peakHour}
+              onChange={(e) => setPeakHour(e.target.checked)}
+            />
+            <label htmlFor="peakHour">Hora pico</label>
+          </div>
+
+          {/* Lluvia */}
+          <div className="field checkbox-field">
+            <input
+              id="rain"
+              type="checkbox"
+              checked={rain}
+              onChange={(e) => setRain(e.target.checked)}
+            />
+            <label htmlFor="rain">Lluvia</label>
+          </div>
+
+          {/* Peajes */}
+          <div className="field">
+            <label htmlFor="tolls">Peajes</label>
+            <input
+              id="tolls"
               type="number"
               min={0}
               value={tolls}
