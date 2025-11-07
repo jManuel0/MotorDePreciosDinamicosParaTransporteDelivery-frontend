@@ -1,8 +1,8 @@
-import { TripType } from "./TripType";
-import { Trip } from "./Trip";
-import { MotoTrip } from "./trips/MotoTrip";
+import type { TripType } from "./TripType";
+import type { Trip } from "./Trip";
+import { MotoTrip } from "./trips/MotorTrip";
 import { AutoTrip } from "./trips/AutoTrip";
-import { CamionTrip } from "./trips/CamionTrip";
+import { CamionTrip } from "./trips/CamionTrips";
 import { PremiumTrip } from "./trips/PremiumTrip";
 
 export class TripFactory {

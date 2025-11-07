@@ -1,8 +1,12 @@
-import { Trip } from "../Trip";
+import type { Trip } from "../Trip";
 import PricingConfig from "../PricingConfig";
 
 export class PremiumTrip implements Trip {
-  constructor(private distanceKm: number) {}
+  private readonly distanceKm: number;
+
+  constructor(distanceKm: number) {
+    this.distanceKm = distanceKm;
+  }
 
   getType(): string {
     return "PREMIUM";
