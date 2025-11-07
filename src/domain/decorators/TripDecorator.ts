@@ -1,7 +1,11 @@
-import { Trip } from "../Trip";
+import type { Trip } from "../Trip";
 
 export abstract class TripDecorator implements Trip {
-  protected constructor(protected wrapped: Trip) {}
+  protected wrapped: Trip;
+
+  protected constructor(wrapped: Trip) {
+    this.wrapped = wrapped;
+  }
 
   getType(): string {
     return this.wrapped.getType();
@@ -9,3 +13,4 @@ export abstract class TripDecorator implements Trip {
 
   abstract calculatePrice(): number;
 }
+
