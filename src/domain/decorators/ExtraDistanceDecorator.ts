@@ -1,9 +1,13 @@
 import { TripDecorator } from "./TripDecorator";
 import PricingConfig from "../PricingConfig";
+import type { Trip } from "../Trip";
 
 export class ExtraDistanceDecorator extends TripDecorator {
-  constructor(wrapped: any, private distanceKm: number) {
+  private readonly distanceKm: number;
+
+  constructor(wrapped: Trip, distanceKm: number) {
     super(wrapped);
+    this.distanceKm = distanceKm;
   }
 
   calculatePrice(): number {
@@ -11,11 +15,16 @@ export class ExtraDistanceDecorator extends TripDecorator {
     const config = PricingConfig.getInstance();
     const threshold = config.getExtraDistanceThreshold();
 
-    if (this.distanceKm <= threshold) return base;
+    if (this.distanceKm <= threshold) {
+      return base;
+    }
 
     const extraKm = this.distanceKm - threshold;
     const baseRate = config.getBaseRate(this.getType());
-    const extra = extraKm * baseRate * (config.getExtraDistanceMultiplier() - 1);
+    const extra =
+      extraKm *
+      baseRate *
+      (config.getExtraDistanceMultiplier() - 1);
 
     return base + extra;
   }
